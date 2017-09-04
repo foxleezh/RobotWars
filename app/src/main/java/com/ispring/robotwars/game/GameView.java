@@ -604,6 +604,7 @@ public class GameView extends View {
             }else if(enable!=null){
                 if(enable[p.y][p.x]){
                     Node node=stage.nodes[p.y][p.x];
+                    node=node.reverse1(node);
                     Log.d(TAG, "move: "+node.toString());
                     moveRobot.setNode(node);
                     enable=null;

@@ -48,34 +48,40 @@ public class Robot extends CellSprite{
         if(start!=null){
             end=start.parent;
             if(end!=null){
-                setSpeed(2);
-                degree=getDegree(start,end);
-                setDegree(degree);
+                if(degree==0) {
+                    setSpeed(6);
+                    degree = getDegree(start, end);
+                    setDegree(degree);
+                }
                 if(degree==Math.PI/2){
                     if(getY()>end.value.y*getHeight()){
                         setY(end.value.y*getHeight());
                         start=end;
+                        degree=0;
                     }
                 }else if(degree==-Math.PI/2){
                     if(getY()<end.value.y*getHeight()){
                         setY(end.value.y*getHeight());
                         start=end;
+                        degree=0;
                     }
                 }else if(degree==0){
                     if(getX()>end.value.x*getHeight()){
                         setX(end.value.x*getHeight());
                         start=end;
+                        degree=0;
                     }
                 }else if(degree==Math.PI){
                     if(getX()<end.value.x*getHeight()){
                         setX(end.value.x*getHeight());
                         start=end;
+                        degree=0;
                     }
                 }
             }else {
                 setSpeed(0);
-                xIndex= start.value.x;
-                yIndex=start.value.y;
+                setxIndex(start.value.x);
+                setyIndex(start.value.y);
                 start=null;
             }
         }
